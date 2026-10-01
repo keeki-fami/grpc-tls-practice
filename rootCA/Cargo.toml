@@ -4,4 +4,5 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rcgen = "0.14.10"
+rcgen = { version = "0.14.10", features = ["x509-parser"] }
+time = "0.3.55"
