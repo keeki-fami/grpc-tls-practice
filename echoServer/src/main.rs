@@ -29,8 +29,10 @@ impl Echo for MyEcho {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let addr = "[::1]:50051".parse()?;
+    let addr = "127.0.0.1:50051".parse()?;
     let echo = MyEcho::default();
+
+    println!("port: 50051");
 
     Server::builder()
         .add_service(EchoServer::new(echo))
