@@ -33,7 +33,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "127.0.0.1:50051".parse()?;
     let echo = MyEcho::default();
 
-    let key: Vec<u8> = tokio::fs::read("./cert.key.pem").await?;
+    let key: Vec<u8> = tokio::fs::read("./cert/cert.key.pem").await?;
     let cert: Vec<u8> = tokio::fs::read("./cert/cert.pem").await?;
 
     let key_str = String::from_utf8(key).unwrap();
