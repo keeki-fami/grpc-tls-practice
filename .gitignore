@@ -1,1 +1,3 @@
 echoServer/target
+*.pem
+*.der
