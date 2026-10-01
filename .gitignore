@@ -1,3 +1,4 @@
-echoServer/target
+target/
+.DS_Store
 *.pem
 *.der
