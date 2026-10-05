@@ -3,6 +3,7 @@ import GRPCNIOTransportHTTP2
 import Synchronization
 import SwiftUI
 
+
 func readBinaryFile_UInt8() -> [UInt8]{
     guard let fileURL = Bundle.main.url(forResource: "root-ca", withExtension: ".der") else {
         fatalError("failed to get file")
@@ -26,10 +27,19 @@ final class ClientManager: Sendable {
     static func makeTransport() throws -> HTTP2ClientTransport.TransportServices {
         try .http2NIOTS(
             target: .ipv4(address: "127.0.0.1", port: 50051),
+//            transportSecurity: .plaintext
             transportSecurity: .tls(configure: { configure in
                 let cert = readBinaryFile_UInt8()
                 configure.trustRoots = .certificates([.bytes(cert, format: .der)])
             })
+            
+//            transportSecurity: .mTLS(identityProvider: {
+//                
+//            }, configure: { config in
+//                config.trustRoots = .certificates([.bytes(readBinaryFile_UInt8(), format: .der)])
+//            })
+            
+
         )
     }
 
