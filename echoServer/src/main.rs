@@ -46,7 +46,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("port: 50051");
 
     Server::builder()
-        // .tls_config(ServerTlsConfig::new().identity(identity)).unwrap()
+        .tls_config(ServerTlsConfig::new().identity(identity)).unwrap()
         .add_service(EchoServer::new(echo))
         .serve(addr)
         .await?;
